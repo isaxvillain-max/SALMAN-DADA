@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salman Dada</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f6f6f6;
+      color: #00aa55;
+      font-family: "Courier New", monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: left;
+    }
+
+    .box {
+      width: 90%;
+      max-width: 600px;
+      background: rgba(0, 0, 0, 0.05);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 0 15px rgba(0, 255, 100, 0.2);
+      overflow: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      color: #009944;
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      text-shadow: 0 0 4px #00aa55;
+    }
+
+    .text {
+      white-space: pre-line;
+      font-size: 1.05em;
+      line-height: 1.6;
+      color: #004422;
+      text-shadow: 0 0 3px #00aa55;
+      border-right: 2px solid #00aa55;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5em; }
+      .text { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Salman Dada</h1>
+    <div class="text" id="typing"></div>
+  </div>
+
+  <script>
+    const textLines = [
+      "Salman Dada — the name itself feels like a brand in the tech world! 💻",
+      "A man of class and focus, known for his grip on Ethical Hacking, Cyber Security, and Software Development.",
+      "He’s that kind of teacher who mixes code with curiosity — JS, Python, C++, Swift, Pen Testing — you name it!",
+      "But wait, that’s not all. He’s a freelancer too, turning skills into results. 💼",
+      "Now, here’s the twist 😄 — in real life, he’s calm and inspiring, but on social media... totally different vibe!",
+      "He acts like a full-on TikToker — lip-syncing to Indian movie dialogues 😂",
+      "And honestly, it doesn’t match his professional aura — his personality deserves more tech vibes than TikTok ones!",
+      "Still, as his student, I say this with respect — that contrast makes him unique in his own way.",
+      "This is just my POV, nothing personal. Maybe it’s all part of his fun side! 😎",
+      "— Written and created by Isa."
+    ];
+
+    const typingElement = document.getElementById("typing");
+    let lineIndex = 0;
+    let charIndex = 0;
+    let currentLine = "";
+    const typingSpeed = 60; // balanced speed
+
+    function type() {
+      if (lineIndex < textLines.length) {
+        if (charIndex < textLines[lineIndex].length) {
+          currentLine += textLines[lineIndex].charAt(charIndex);
+          typingElement.innerHTML = currentLine;
+          charIndex++;
+          setTimeout(type, typingSpeed);
+        } else {
+          currentLine += "\n";
+          typingElement.innerHTML = currentLine;
+          lineIndex++;
+          charIndex = 0;
+          setTimeout(type, 400); // short pause between lines
+        }
+      } else {
+        typingElement.style.border = "none"; // stop cursor blink
+      }
+    }
+
+    window.onload = () => setTimeout(type, 1000); // 1-second delay start
+  </script>
+</body>
+</html>
